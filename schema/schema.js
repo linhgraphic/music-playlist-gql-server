@@ -36,11 +36,6 @@ const userType = new GraphQLObjectType({
     },
   }),
 });
-// const artists = [
-//   { name: "Queen", id: "1" },
-//   { name: "George Michael", id: "2" },
-//   { name: "Taylor Swift", id: "3" },
-// ];
 
 const songType = new GraphQLObjectType({
   name: "Song",
@@ -76,7 +71,6 @@ const artistType = new GraphQLObjectType({
     songs: {
       type: new GraphQLList(songType),
       resolve(parent, arg) {
-        //return _.filter(songs, { artistId: parent.id });
         return Song.find({ artistId: parent.id });
       },
     },
@@ -138,10 +132,6 @@ const RootQuery = new GraphQLObjectType({
         return User.find({ username: arg.username });
       },
     },
-    // return User.findOne({ username: username })
-    // .populate('posts').exec((err, posts) => {
-    //   console.log("Populated User " + posts);
-    // })
   },
 });
 

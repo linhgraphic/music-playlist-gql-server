@@ -7,20 +7,14 @@ const connectDb = require("./config/mongoDb");
 
 const PORT = process.env.port || 3002;
 app.use(cors());
-// mongoose
-//   .connect(Url, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//   .then((result) => console.log("connect to mongodb"))
-//   .catch((err) => console.log(err));
+
 connectDb();
 app.use(
-  "/playlist",
+  "/",
   graphqlHTTP((req) => {
     return {
       schema,
-      context: { req, test: "hello Linh" },
+      context: { req },
       graphiql: true,
     };
   })
