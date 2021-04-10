@@ -5,7 +5,7 @@ const schema = require("./schema/schema");
 const cors = require("cors");
 const connectDb = require("./config/mongoDb");
 
-const PORT = process.env.port || 3002;
+const PORT = process.env.PORT || 3002;
 app.use(cors());
 
 connectDb();
